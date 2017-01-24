@@ -3,7 +3,7 @@ package cd.rssfeed;
 import java.io.IOException;
 
 import cd.rssfeed.model.FeedSource;
-
+import cd.rssfeed.view.FeedOverviewController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -78,6 +78,9 @@ public class MainApp extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(feedOverview);
+
+            FeedOverviewController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
