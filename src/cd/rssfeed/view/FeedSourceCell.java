@@ -13,6 +13,8 @@ public class FeedSourceCell {
     private Label title;
     @FXML
     private Label description;
+    @FXML
+    private Label url;
 
     public FeedSourceCell()
     {
@@ -30,10 +32,11 @@ public class FeedSourceCell {
         }
     }
 
-    public void setInfo(String title, String description)
+    public void setInfo(String title, String description, String url)
     {
         this.title.setText(title);
         this.description.setText(description);
+        this.url.setText(url);
     }
 
     public VBox getBox()

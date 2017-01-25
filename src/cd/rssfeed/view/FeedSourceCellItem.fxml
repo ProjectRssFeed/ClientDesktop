@@ -11,6 +11,14 @@
             <Insets left="2.0" right="2.0" />
          </padding>
       </Label>
-      <Label fx:id="description" prefHeight="65.0" prefWidth="300.0" text="Description..." wrapText="true" />
+      <Label fx:id="description" prefHeight="41.0" prefWidth="300.0" text="Description..." wrapText="true">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding></Label>
+      <Label fx:id="url" prefHeight="17.0" prefWidth="300.0" text="URL...">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding>
+      </Label>
    </children>
 </VBox>
