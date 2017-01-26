@@ -59,7 +59,7 @@ public class FeedSourceAddDialogController {
         if (isInputValid()) {
 //            feedSource.setFeedName(titleField.getText());
 //            feedSource.setFeedDescription(descriptionField.getText());
-            feedSource.setFeedURL(urlField.getText());
+            feedSource.setFeedSourceURL(urlField.getText());
 
             okClicked = true;
             dialogStage.close();

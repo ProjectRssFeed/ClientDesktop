@@ -13,7 +13,7 @@ public class FeedSourceListViewCell extends ListCell<FeedSource> {
 			FeedSourceCell feedSourceCell = new FeedSourceCell();
 
 			// Set Data
-			feedSourceCell.setInfo(feedSource.getFeedName(), feedSource.getFeedDescription(), feedSource.getFeedURL());
+			feedSourceCell.setInfo(feedSource.getFeedSourceName(), feedSource.getFeedSourceDescription(), feedSource.getFeedSourceURL());
 			// Set Graphics
 			setGraphic(feedSourceCell.getBox());
 		}

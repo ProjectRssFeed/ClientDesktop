@@ -4,53 +4,55 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class FeedSource {
-	private final StringProperty feedName;
-	private final StringProperty feedURL;
-	private final StringProperty feedDescription;
+	private final StringProperty feedSourceName;
+	private final StringProperty feedSourceURL;
+	private final StringProperty feedSourceDescription;
+
+//	private final
 
 	public FeedSource() {
 		this(null, null, null);
 	}
 
-	public FeedSource(String feedName, String feedURL, String feedDescription) {
-		this.feedName = new SimpleStringProperty(feedName);
-		this.feedURL = new SimpleStringProperty(feedURL);
-		this.feedDescription = new SimpleStringProperty(feedDescription);
+	public FeedSource(String feedSourceName, String feedSourceURL, String feedSourceDescription) {
+		this.feedSourceName = new SimpleStringProperty(feedSourceName);
+		this.feedSourceURL = new SimpleStringProperty(feedSourceURL);
+		this.feedSourceDescription = new SimpleStringProperty(feedSourceDescription);
 	}
 
-	public String getFeedName() {
-		return feedName.get();
+	public String getFeedSourceName() {
+		return feedSourceName.get();
 	}
 
-	public void setFeedName(String feedName) {
-		this.feedName.set(feedName);
+	public void setFeedSourceName(String feedSourceName) {
+		this.feedSourceName.set(feedSourceName);
 	}
 
-	public StringProperty feedNameProperty() {
-		return feedName;
+	public StringProperty feedSourceNameProperty() {
+		return feedSourceName;
 	}
 
-	public String getFeedURL() {
-		return feedURL.get();
+	public String getFeedSourceURL() {
+		return feedSourceURL.get();
 	}
 
-	public void setFeedURL(String feedURL) {
-		this.feedURL.set(feedURL);
+	public void setFeedSourceURL(String feedSourceURL) {
+		this.feedSourceURL.set(feedSourceURL);
 	}
 
-	public StringProperty FeedURLProperty() {
-		return feedURL;
+	public StringProperty FeedSourceURLProperty() {
+		return feedSourceURL;
 	}
 
-	public String getFeedDescription() {
-		return feedDescription.get();
+	public String getFeedSourceDescription() {
+		return feedSourceDescription.get();
 	}
 
-	public void setFeedDescription(String feedDescription) {
-		this.feedDescription.set(feedDescription);
+	public void setFeedSourceDescription(String feedSourceDescription) {
+		this.feedSourceDescription.set(feedSourceDescription);
 	}
 
-	public StringProperty feedDescriptionProperty() {
-		return feedDescription;
+	public StringProperty feedSourceDescriptionProperty() {
+		return feedSourceDescription;
 	}
 }

@@ -8,12 +8,15 @@ import javafx.scene.control.ListCell;
 import javafx.util.Callback;
 import javafx.scene.control.ListView;
 import cd.rssfeed.MainApp;
+import cd.rssfeed.model.Feed;
 import cd.rssfeed.model.FeedSource;
 
 
 public class FeedOverviewController {
 	@FXML
 	private ListView<FeedSource> feedSourceList;
+	@FXML
+	private ListView<Feed> feedList;
 
 	private MainApp mainApp;
 
@@ -56,12 +59,11 @@ public class FeedOverviewController {
 	    }
 	}
 
-	public void setMainApp(MainApp mainApp) {
-		this.mainApp = mainApp;
-
-		ObservableList<FeedSource> feedList = mainApp.getFeedSourceData();
-		if (feedList != null)
-			feedSourceList.setItems(feedList);
+	private void configureFeedSourceList() {
+		// Feed Source item building
+		ObservableList<FeedSource> tmpFeedSourceList = mainApp.getFeedSourceData();
+		if (tmpFeedSourceList != null)
+			feedSourceList.setItems(tmpFeedSourceList);
 		feedSourceList.setCellFactory(new Callback<ListView<FeedSource>, javafx.scene.control.ListCell<FeedSource>>()
         {
             @Override
@@ -70,5 +72,27 @@ public class FeedOverviewController {
                 return new FeedSourceListViewCell();
             }
         });
+	}
+
+	private void configureFeedList() {
+		// Feed Source item building
+		ObservableList<Feed> tmpFeedList = mainApp.getFeedData();
+		if (tmpFeedList != null)
+			feedList.setItems(tmpFeedList);
+		feedList.setCellFactory(new Callback<ListView<Feed>, javafx.scene.control.ListCell<Feed>>()
+        {
+            @Override
+            public ListCell<Feed> call(ListView<Feed> listView)
+            {
+                return new FeedListViewCell();
+            }
+        });
+	}
+
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
+
+		configureFeedSourceList();
+		configureFeedList();
 	}
 }

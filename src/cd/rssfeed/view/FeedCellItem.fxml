@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Title" textAlignment="CENTER">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding>
+      </Label>
+      <Label fx:id="description" prefHeight="41.0" prefWidth="300.0" text="Description..." wrapText="true">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding></Label>
+      <Label fx:id="url" prefHeight="17.0" prefWidth="300.0" text="URL...">
+         <padding>
+            <Insets left="2.0" right="2.0" />
+         </padding>
+      </Label>
+   </children>
+</VBox>

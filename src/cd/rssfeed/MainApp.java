@@ -2,6 +2,7 @@ package cd.rssfeed;
 
 import java.io.IOException;
 
+import cd.rssfeed.model.Feed;
 import cd.rssfeed.model.FeedSource;
 import cd.rssfeed.view.FeedOverviewController;
 import cd.rssfeed.view.FeedSourceAddDialogController;
@@ -23,12 +24,14 @@ public class MainApp extends Application {
     private BorderPane rootLayout;
 
     private ObservableList<FeedSource> feedSourceData = FXCollections.observableArrayList();
+    private ObservableList<Feed> feedData = FXCollections.observableArrayList();
 
     /**
      * Constructor
      */
     public MainApp() {
-    	feedSourceData.add(new FeedSource("Feed1", "localhost", "Feed test"));
+    	feedSourceData.add(new FeedSource("FeedSouce1", "localhost", "FeedSource test"));
+    	feedData.add(new Feed("Feed1", "localhost", "Feed test"));
     }
 
     /**
@@ -37,6 +40,10 @@ public class MainApp extends Application {
      */
     public ObservableList<FeedSource> getFeedSourceData() {
     	return feedSourceData;
+    }
+
+    public ObservableList<Feed> getFeedData() {
+    	return feedData;
     }
 
 	@Override
