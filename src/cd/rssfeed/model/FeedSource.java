@@ -1,5 +1,7 @@
 package cd.rssfeed.model;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -8,7 +10,7 @@ public class FeedSource {
 	private final StringProperty feedSourceURL;
 	private final StringProperty feedSourceDescription;
 
-//	private final
+	private ArrayList<Feed> feedList;
 
 	public FeedSource() {
 		this(null, null, null);
@@ -18,6 +20,7 @@ public class FeedSource {
 		this.feedSourceName = new SimpleStringProperty(feedSourceName);
 		this.feedSourceURL = new SimpleStringProperty(feedSourceURL);
 		this.feedSourceDescription = new SimpleStringProperty(feedSourceDescription);
+		this.feedList = null;
 	}
 
 	public String getFeedSourceName() {
@@ -54,5 +57,13 @@ public class FeedSource {
 
 	public StringProperty feedSourceDescriptionProperty() {
 		return feedSourceDescription;
+	}
+
+	public ArrayList<Feed> getFeedList() {
+		return feedList;
+	}
+
+	public void setFeedList(ArrayList<Feed> feedList) {
+		this.feedList = feedList;
 	}
 }

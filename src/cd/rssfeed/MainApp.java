@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import cd.rssfeed.model.Feed;
 import cd.rssfeed.model.FeedSource;
+import cd.rssfeed.view.ConnectionController;
 import cd.rssfeed.view.FeedOverviewController;
 import cd.rssfeed.view.FeedSourceAddDialogController;
 import javafx.application.Application;
@@ -53,7 +54,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showFeedOverview();
+        showConnection();
 	}
 
     /**
@@ -70,6 +71,23 @@ public class MainApp extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showConnection() {
+    	try {
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Connection.fxml"));
+            AnchorPane connection = (AnchorPane) loader.load();
+
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(connection);
+
+            ConnectionController controller = loader.getController();
+            controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
