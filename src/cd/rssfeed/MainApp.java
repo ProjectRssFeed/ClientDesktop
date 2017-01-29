@@ -27,12 +27,17 @@ public class MainApp extends Application {
     private ObservableList<FeedSource> feedSourceData = FXCollections.observableArrayList();
     private ObservableList<Feed> feedData = FXCollections.observableArrayList();
 
+    private Configuration appConfig;
+    private Loader loader;
+
     /**
      * Constructor
      */
     public MainApp() {
-    	feedSourceData.add(new FeedSource("FeedSouce1", "localhost", "FeedSource test"));
-    	feedData.add(new Feed("Feed1", "localhost", "Feed test"));
+    	appConfig = new Configuration();
+    	loader = new Loader(appConfig);
+
+    	loadAllFeedData();
     }
 
     /**
@@ -45,6 +50,20 @@ public class MainApp extends Application {
 
     public ObservableList<Feed> getFeedData() {
     	return feedData;
+    }
+
+    public void loadAllFeedData() {
+    	loader.loadFeedSourcesAndFeeds().forEach(source->{
+    		feedSourceData.add(source);
+    		source.getFeedList().forEach(feed->
+    			feedData.add(feed));
+    	});
+    }
+
+    public void loadFeedList() {
+    	feedSourceData.forEach(feedSource->
+    		feedSource.getFeedList().forEach(feed->
+    			feedData.add(feed)));
     }
 
 	@Override

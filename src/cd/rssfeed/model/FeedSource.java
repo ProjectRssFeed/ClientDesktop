@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class FeedSource {
+	private Integer Id;
+
 	private final StringProperty feedSourceName;
 	private final StringProperty feedSourceURL;
 	private final StringProperty feedSourceDescription;
@@ -13,14 +15,23 @@ public class FeedSource {
 	private ArrayList<Feed> feedList;
 
 	public FeedSource() {
-		this(null, null, null);
+		this(null, null, null, null);
 	}
 
-	public FeedSource(String feedSourceName, String feedSourceURL, String feedSourceDescription) {
+	public FeedSource(Integer id, String feedSourceName, String feedSourceURL, String feedSourceDescription) {
+		this.Id = id;
 		this.feedSourceName = new SimpleStringProperty(feedSourceName);
 		this.feedSourceURL = new SimpleStringProperty(feedSourceURL);
 		this.feedSourceDescription = new SimpleStringProperty(feedSourceDescription);
 		this.feedList = null;
+	}
+
+	public Integer getFeedSourceId() {
+		return Id;
+	}
+
+	public void setFeedSourceId(Integer id) {
+		this.Id = id;
 	}
 
 	public String getFeedSourceName() {
