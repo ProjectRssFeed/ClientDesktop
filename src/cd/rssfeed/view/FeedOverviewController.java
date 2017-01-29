@@ -48,7 +48,6 @@ public class FeedOverviewController {
 		if (selectedIndex >= 0) {
 			FeedSource removedSource = feedSourceList.getItems().get(selectedIndex);
 			mainApp.removeFeedSource(removedSource);
-//			feedSourceList.getItems().remove(selectedIndex);
 	    } else {
 	        // Nothing selected.
 	        Alert alert = new Alert(AlertType.WARNING);
