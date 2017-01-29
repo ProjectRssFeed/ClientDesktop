@@ -58,6 +58,8 @@ public class Loader {
 		String url = config.getServerURL() + config.getApiVersion();
 		HttpResponse<JsonNode> json = api.getFeedSourceList(url);
 
+		if (json == null)
+			return feedSources;
 		JSONArray dataArray = json.getBody().getArray();
 
 		for (int i = 0; i < dataArray.length(); i++) {
@@ -89,6 +91,9 @@ public class Loader {
 		ArrayList<Feed> feeds = new ArrayList<Feed>();
 		String url = config.getServerURL() + config.getApiVersion();
 		HttpResponse<JsonNode> json = api.getFeedsFromFeedSource(url, feedSource);
+
+		if (json == null)
+			return feedSource;
 
 		JSONArray dataArray = json.getBody().getArray();
 

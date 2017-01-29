@@ -23,9 +23,10 @@
                         <Insets top="12.0" />
                      </padding>
                   </Label>
-                  <ButtonBar layoutX="78.0" layoutY="50.0" prefHeight="40.0" prefWidth="211.0">
+                  <ButtonBar layoutX="30.0" layoutY="50.0" prefHeight="40.0" prefWidth="320.0">
                     <buttons>
                       <Button mnemonicParsing="false" onAction="#handleNewFeedSource" text="Add Source" ButtonBar.buttonData="LEFT" />
+                        <Button mnemonicParsing="false" onAction="#handleRefreshFeedSource" text="Refresh" />
                         <Button mnemonicParsing="false" onAction="#handleRemoveFeedSource" text="Remove" ButtonBar.buttonData="RIGHT" />
                     </buttons>
                   </ButtonBar>
@@ -41,7 +42,7 @@
                         <Insets top="12.0" />
                      </padding>
                   </Label>
-                  <Button layoutX="410.0" layoutY="53.0" minWidth="74.0" mnemonicParsing="false" text="Refresh" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="410.0">
+                  <Button layoutX="410.0" layoutY="53.0" minWidth="74.0" mnemonicParsing="false" onAction="#handleRefreshFeedList" text="Refresh" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="410.0">
                      <padding>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </padding>

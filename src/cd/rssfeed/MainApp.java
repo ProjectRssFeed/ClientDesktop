@@ -53,6 +53,7 @@ public class MainApp extends Application {
     }
 
     public void loadAllFeedData() {
+    	feedSourceData.clear();
     	loader.loadFeedSourcesAndFeeds().forEach(source->{
     		feedSourceData.add(source);
     		source.getFeedList().forEach(feed->
@@ -60,10 +61,33 @@ public class MainApp extends Application {
     	});
     }
 
+    public void loadFeedSource() {
+    	feedSourceData.clear();
+    	loader.loadFeedSourcesAndFeeds().forEach(source->feedSourceData.add(source));
+    }
+
     public void loadFeedList() {
+    	feedData.clear();
     	feedSourceData.forEach(feedSource->
     		feedSource.getFeedList().forEach(feed->
     			feedData.add(feed)));
+    }
+
+    /**
+     * Add new FeedSource and load Feeds to the view
+     * @param newSource
+     */
+    public void addNewFeedSource(FeedSource newSource) {
+    	newSource = loader.loadFeedsFromFeedSource(newSource);
+        feedSourceData.add(newSource);
+
+        // TODO: API Call
+
+        newSource.getFeedList().forEach(feed->feedData.add(feed));
+    }
+
+    public void removeFeedSource(FeedSource removedSource) {
+
     }
 
 	@Override

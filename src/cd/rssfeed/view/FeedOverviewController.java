@@ -35,10 +35,10 @@ public class FeedOverviewController {
 	 */
 	@FXML
 	private void handleNewFeedSource() {
-	    FeedSource tempFeedSource= new FeedSource();
-	    boolean okClicked = mainApp.showFeedSourceAddDialog(tempFeedSource);
+	    FeedSource newSource= new FeedSource();
+	    boolean okClicked = mainApp.showFeedSourceAddDialog(newSource);
 	    if (okClicked) {
-	        mainApp.getFeedSourceData().add(tempFeedSource);
+	    	mainApp.addNewFeedSource(newSource);
 	    }
 	}
 
@@ -57,6 +57,16 @@ public class FeedOverviewController {
 
 	        alert.showAndWait();
 	    }
+	}
+
+	@FXML
+	private void handleRefreshFeedList() {
+		mainApp.loadFeedList();
+	}
+
+	@FXML
+	private void handleRefreshFeedSource() {
+		mainApp.loadFeedSource();
 	}
 
 	private void configureFeedSourceList() {
