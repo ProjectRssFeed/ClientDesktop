@@ -13,8 +13,21 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import cd.rssfeed.model.FeedSource;
 
+/**
+ * APIRequest Class
+ * Contains Server Routes
+ * @author Eric
+ *
+ */
 public class APIRequest {
 
+	/**
+	 * Post a FeedSource
+	 * @param url Server URL
+	 * @param onSuccess callback
+	 * @param newSource FeedSource
+	 * @return JSON response
+	 */
 	public HttpResponse<JsonNode> postFeedSource(String url, Function<HttpResponse<JsonNode>, Void> onSuccess, FeedSource newSource) {
 		String reqUrl = url + "/rss/";
 		HttpResponse<JsonNode> jsonResponse = null;
@@ -36,9 +49,16 @@ public class APIRequest {
 		return jsonResponse;
 	}
 
+	/**
+	 * Get FeedSource List (Async)
+	 * @param url Server URL
+	 * @param onSuccess Callback
+	 * @return Future
+	 */
 	public Future<HttpResponse<JsonNode>> getFeedSourceList(String url, Function<HttpResponse<JsonNode>, Void> onSuccess) {
 		String reqUrl = url + "/rss/";
 		Future<HttpResponse<JsonNode>> jsonResponse = null;
+
 		jsonResponse = Unirest.get(reqUrl)
 		        .header("accept", "application/json")
 		        .header("Content-Type", "application/json")
@@ -62,9 +82,17 @@ public class APIRequest {
 		return jsonResponse;
 	}
 
+	/**
+	 * Get Feeds of one FeedSource (Async)
+	 * @param url Server URL
+	 * @param onSuccess Callback
+	 * @param feedSource FeedSouce
+	 * @return Future
+	 */
 	public Future<HttpResponse<JsonNode>> getFeedsFromFeedSource(String url, Function<HttpResponse<JsonNode>, Void> onSuccess, FeedSource feedSource) {
 		String reqUrl = url + "/rss/" + feedSource.getFeedSourceId();
 		Future<HttpResponse<JsonNode>> jsonResponse = null;
+
 		jsonResponse = Unirest.get(reqUrl)
 		        .header("accept", "application/json")
 		        .header("Content-Type", "application/json")
@@ -88,6 +116,13 @@ public class APIRequest {
 		return jsonResponse;
 	}
 
+	/**
+	 * Delete a FeedSource
+	 * @param url Server URL
+	 * @param onSuccess Callback
+	 * @param removedSource FeedSource
+	 * @return JSON Response
+	 */
 	public HttpResponse<JsonNode> deleteFeedSource(String url, Function<HttpResponse<JsonNode>, Void> onSuccess, FeedSource removedSource) {
 		String reqUrl = url + "/rss/" + removedSource.getFeedSourceId();
 		HttpResponse<JsonNode> jsonResponse = null;

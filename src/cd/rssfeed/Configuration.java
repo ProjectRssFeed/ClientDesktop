@@ -1,5 +1,11 @@
 package cd.rssfeed;
 
+/**
+ * Configuration Class
+ * Contain Server information: URL and API Version
+ * @author Eric
+ *
+ */
 public class Configuration {
 	private String serverUrl = "http://163.5.84.111:8443/";
 	private String apiVersion = "v0.1";

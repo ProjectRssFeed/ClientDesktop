@@ -28,9 +28,11 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
+    // Observable lists
     private ObservableList<FeedSource> feedSourceData = FXCollections.observableArrayList();
     private ObservableList<Feed> feedData = FXCollections.observableArrayList();
 
+    // Core Settings
     private Configuration appConfig;
     private Loader loader;
 

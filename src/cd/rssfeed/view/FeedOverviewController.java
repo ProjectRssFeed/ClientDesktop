@@ -30,8 +30,8 @@ public class FeedOverviewController {
 	}
 
 	/**
-	 * Called when the user clicks the new button. Opens a dialog to edit
-	 * details for a new person.
+	 * Called when the user clicks the new button. Opens a dialog to add
+	 * a new FeedSource
 	 */
 	@FXML
 	private void handleNewFeedSource() {
@@ -42,6 +42,10 @@ public class FeedOverviewController {
 	    }
 	}
 
+	/**
+	 * Called when the user clicks the remove button. Remove a FeedSource
+	 * Show an alert Dialog if nothing selected
+	 */
 	@FXML
 	private void handleRemoveFeedSource() {
 		int selectedIndex = feedSourceList.getSelectionModel().getSelectedIndex();
@@ -60,16 +64,27 @@ public class FeedOverviewController {
 	    }
 	}
 
+	/**
+	 * Called when the user clicks the Refresh button below FeedList
+	 * Reload FeedList view
+	 */
 	@FXML
 	private void handleRefreshFeedList() {
 		mainApp.reloadFeedList();
 	}
 
+	/**
+	 * Called when the user clicks the Refresh button below FeedSource
+	 * Reload FeedSource view
+	 */
 	@FXML
 	private void handleRefreshFeedSource() {
 		mainApp.loadFeedSource();
 	}
 
+	/**
+	 * Custom FeedSource List Cell Factory
+	 */
 	private void configureFeedSourceList() {
 		// Feed Source item building
 		ObservableList<FeedSource> tmpFeedSourceList = mainApp.getFeedSourceData();
@@ -85,6 +100,9 @@ public class FeedOverviewController {
         });
 	}
 
+	/**
+	 * Custom Feed List Cell Factory
+	 */
 	private void configureFeedList() {
 		// Feed Source item building
 		ObservableList<Feed> tmpFeedList = mainApp.getFeedData();

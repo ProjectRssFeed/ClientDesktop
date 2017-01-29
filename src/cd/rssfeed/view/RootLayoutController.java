@@ -20,6 +20,9 @@ public class RootLayoutController {
         this.mainApp = mainApp;
     }
 
+    /**
+     * Called when the user clicks Change Server.
+     */
     @FXML
     private void handleSettings() {
     	ArrayList<String> conf = new ArrayList<String>();
