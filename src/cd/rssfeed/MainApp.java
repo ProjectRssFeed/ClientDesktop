@@ -1,6 +1,8 @@
 package cd.rssfeed;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.function.Function;
 
 import cd.rssfeed.model.Feed;
 import cd.rssfeed.model.FeedSource;
@@ -54,23 +56,45 @@ public class MainApp extends Application {
 
     public void loadAllFeedData() {
     	feedSourceData.clear();
-    	loader.loadFeedSourcesAndFeeds().forEach(source->{
-    		feedSourceData.add(source);
-    		source.getFeedList().forEach(feed->
-    			feedData.add(feed));
-    	});
+    	loader.loadFeedSourcesAndFeeds(loadFeedSourceView(), loadFeedView());
+    }
+
+    public Function<ArrayList<FeedSource>, Void> loadFeedSourceView() {
+    	return (feedSources) -> {
+    		feedSourceData.clear();
+    		feedSources.forEach(source->feedSourceData.add(source));
+
+    		return null;
+    	};
+    }
+
+    public Function<FeedSource, Void> loadFeedView() {
+    	return (source) -> {
+    		source.getFeedList().forEach(feed->feedData.add(feed));
+
+    		return null;
+    	};
     }
 
     public void loadFeedSource() {
     	feedSourceData.clear();
-    	loader.loadFeedSourcesAndFeeds().forEach(source->feedSourceData.add(source));
+    	loader.loadFeedSourcesAndFeeds(loadFeedSourceView(), loadFeedView());
     }
 
-    public void loadFeedList() {
+    public void reloadFeedList() {
     	feedData.clear();
     	feedSourceData.forEach(feedSource->
     		feedSource.getFeedList().forEach(feed->
     			feedData.add(feed)));
+    }
+
+    public Function<Void, Void> reloadData() {
+    	return (Void v) -> {
+    		feedData.clear();
+    		loadAllFeedData();
+
+    		return null;
+    	};
     }
 
     /**
@@ -78,16 +102,11 @@ public class MainApp extends Application {
      * @param newSource
      */
     public void addNewFeedSource(FeedSource newSource) {
-    	newSource = loader.loadFeedsFromFeedSource(newSource);
-        feedSourceData.add(newSource);
-
-        // TODO: API Call
-
-        newSource.getFeedList().forEach(feed->feedData.add(feed));
+    	loader.addNewFeedSource(newSource, reloadData());
     }
 
     public void removeFeedSource(FeedSource removedSource) {
-
+    	loader.removeFeedSource(removedSource, reloadData());
     }
 
 	@Override

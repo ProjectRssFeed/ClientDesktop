@@ -7,9 +7,13 @@
 	<classpathentry kind="lib" path="D:/Eric/Projects/Java/unirest-java-1.4.9.jar"/>
 	<classpathentry kind="lib" path="D:/Eric/Projects/Java/json-20160810.jar"/>
 	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcore-4.4.6.jar"/>
-	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpclient-4.5.2.jar"/>
 	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcore-nio-4.4.6.jar"/>
-	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpasyncclient-4.0-beta4.jar"/>
-	<classpathentry kind="lib" path="D:/Eric/Projects/Java/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/jackson-core-2.8.1.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/httpasyncclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/httpasyncclient-cache-4.1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eric/Projects/Java/httpcomponents-asyncclient-4.1.2/lib/httpclient-cache-4.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

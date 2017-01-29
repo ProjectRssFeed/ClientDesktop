@@ -46,7 +46,9 @@ public class FeedOverviewController {
 	private void handleRemoveFeedSource() {
 		int selectedIndex = feedSourceList.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
-			feedSourceList.getItems().remove(selectedIndex);
+			FeedSource removedSource = feedSourceList.getItems().get(selectedIndex);
+			mainApp.removeFeedSource(removedSource);
+//			feedSourceList.getItems().remove(selectedIndex);
 	    } else {
 	        // Nothing selected.
 	        Alert alert = new Alert(AlertType.WARNING);
@@ -61,7 +63,7 @@ public class FeedOverviewController {
 
 	@FXML
 	private void handleRefreshFeedList() {
-		mainApp.loadFeedList();
+		mainApp.reloadFeedList();
 	}
 
 	@FXML
