@@ -6,9 +6,11 @@ import java.util.function.Function;
 
 import cd.rssfeed.model.Feed;
 import cd.rssfeed.model.FeedSource;
+import cd.rssfeed.view.ConfigurationController;
 import cd.rssfeed.view.ConnectionController;
 import cd.rssfeed.view.FeedOverviewController;
 import cd.rssfeed.view.FeedSourceAddDialogController;
+import cd.rssfeed.view.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,13 +100,17 @@ public class MainApp extends Application {
     }
 
     /**
-     * Add new FeedSource and load Feeds to the view
+     * Add new FeedSource and reload the view
      * @param newSource
      */
     public void addNewFeedSource(FeedSource newSource) {
     	loader.addNewFeedSource(newSource, reloadData());
     }
 
+    /**
+     * Remove a FeedSource and reload the view
+     * @param removedSource
+     */
     public void removeFeedSource(FeedSource removedSource) {
     	loader.removeFeedSource(removedSource, reloadData());
     }
@@ -132,6 +138,11 @@ public class MainApp extends Application {
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
+
+            // Give the controller access to the main app.
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -213,12 +224,51 @@ public class MainApp extends Application {
         }
     }
 
+    public boolean showSettingsDialog(ArrayList<String> conf) {
+        try {
+            // Load the FXML file and create a new stage for the pop-up dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/Configuration.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Configuration");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            // Set the FeedSource into the controller.
+            ConfigurationController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setConfiguration(conf);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void setConfiguration(ArrayList<String> conf) {
+    	appConfig.setServerURL(conf.get(0));
+    	appConfig.setApiVersion(conf.get(1));
+    }
+
     /**
      * Returns the main stage.
      * @return
      */
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public Configuration getConfiguration() {
+    	return appConfig;
     }
 
 	public static void main(String[] args) {
